@@ -2,7 +2,7 @@
 //            ESP-NOW DIAGNOSTIC TRANSMITTER
 // ============================================================
 //
-// Broadcasts a ping message every second via ESP-NOW.
+// Sends ping messages via ESP-NOW unicast with automatic retries.
 // Used with OER.Diagnostic.ESPNowReceiver to test signal quality.
 //
 // ============================================================
@@ -32,7 +32,8 @@ struct PingMessage {
 //                    CONFIGURATION
 // ============================================================
 
-#define PING_INTERVAL_MS 1000  // Send ping every 1 second
+#define PING_INTERVAL_MS 100       // Send ping every 100ms (10/sec)
+#define PING_HEARTBEAT_MS 60000    // Stats output every 60 seconds
 
 // ============================================================
 //                    FUNCTIONS
@@ -44,7 +45,13 @@ void diagnosticPingInit();
 // Call from loop - sends ping at configured interval
 void diagnosticPingLoop();
 
-// Get current sequence number
+// Called by ESP-NOW send callback to track success/failure
+void diagnosticPingOnSendResult(bool success);
+
+// Get statistics
 uint32_t diagnosticPingGetSequence();
+uint32_t diagnosticPingGetSendCount();
+uint32_t diagnosticPingGetSuccessCount();
+uint32_t diagnosticPingGetFailCount();
 
 #endif

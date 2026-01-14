@@ -68,6 +68,11 @@
 // Host MAC address - set this to your host device's MAC
 // Only used when ESPNOW_HOST is 0 (client mode)
 #define ESPNOW_HOST_MAC {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF}
+
+// Receiver MAC address for unicast mode (enables auto-retry)
+// Get this from the receiver's serial output on boot
+// Format: {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF}
+#define ESPNOW_RECEIVER_MAC {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}  // <-- UPDATE THIS
 #endif
 
 // ============================================================

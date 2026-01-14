@@ -1,6 +1,7 @@
 #include "callbacks.h"
 #include "config.h"
 #include "setup.h"
+#include "DiagnosticPing.h"
 
 // ============================================================
 //                   CALLBACK FUNCTIONS
@@ -44,8 +45,8 @@ void onEspNowReceive(const uint8_t* mac, const uint8_t* data, int len) {
 
 // Called when ESP-NOW send completes
 void onEspNowSend(const uint8_t* mac, bool success) {
-  Serial.print("[ESP-NOW] Send ");
-  Serial.println(success ? "OK" : "FAILED");
+  // Track send result for statistics
+  diagnosticPingOnSendResult(success);
 }
 #endif
 
