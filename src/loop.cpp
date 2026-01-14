@@ -1,7 +1,7 @@
 #include "loop.h"
 #include "config.h"
 #include "setup.h"
-#include "SampleFunction.h"
+#include "DiagnosticPing.h"
 #include "esp_task_wdt.h"
 
 // MQTT runs on Core 1 (main loop)
@@ -49,7 +49,7 @@ void loopMain() {
   }
 
   // ============================================================
-  // Run puzzle/game logic below (Core 1)
+  // Run diagnostic transmitter logic (Core 1)
   // ============================================================
-  SampleFunction();
+  diagnosticPingLoop();
 }
