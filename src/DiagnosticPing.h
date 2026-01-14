@@ -34,6 +34,7 @@ struct PingMessage {
 
 #define PING_INTERVAL_MS 100       // Send ping every 100ms (10/sec)
 #define PING_HEARTBEAT_MS 60000    // Stats output every 60 seconds
+#define PING_TEST_COUNT 10000      // Stop after this many pings
 
 // ============================================================
 //                    FUNCTIONS
